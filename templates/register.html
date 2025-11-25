@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center"><i class="fas fa-user-plus mr-2"></i>Register</h2>
+      <div class="space-y-4">
+        <input type="text" placeholder="Full Name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+        <input type="email" placeholder="Email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+        <input type="password" placeholder="Password" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+        <select class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300">
+          <option>User Type</option>
+          <option>Donor</option>
+          <option>Hospital</option>
+        </select>
+        <button class="w-full bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition duration-300"><i class="fas fa-user-plus mr-2"></i>Register</button>
+      </div>
+    </div>
+</main>
+
+{% endblock  %}

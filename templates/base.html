@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %} Blood Bank</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-gradient-to-r from-red-600 to-blue-600 text-white py-4 shadow-lg">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl md:text-3xl font-bold"><i class="fas fa-tint mr-2"></i>Blood Bank</h1>
+      <nav class="hidden md:flex space-x-6">
+        <!--
+        <a href="forgot-password.html" class="hover:text-red-200 transition duration-300">Forgot Password</a>
+        <a href="admin-dashboard.html" class="hover:text-red-200 transition duration-300">Admin Dashboard</a>
+        <a href="donor-dashboard.html" class="hover:text-red-200 transition duration-300">Donor Dashboard</a>
+        <a href="hospital-dashboard.html" class="hover:text-red-200 transition duration-300">Hospital Dashboard</a>
+        <a href="about.html" class="hover:text-red-200 transition duration-300">About</a>
+        <a href="contact.html" class="hover:text-red-200 transition duration-300">Contact</a>
+        <a href="help.html" class="hover:text-red-200 transition duration-300">Help/FAQ</a>
+        -->
+        <a href="/login/" class="hover:text-red-200 transition duration-300">Login</a>
+        <a href="/register/" class="hover:text-red-200 transition duration-300">Register</a>
+        <a href="/logout/" class="hover:text-red-200 transition duration-300">Logout</a>
+      </nav>
+      <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-700 text-white px-4 py-2">
+      <!--
+      <a href="forgot-password.html" class="block py-2 hover:text-red-200">Forgot Password</a>
+      <a href="admin-dashboard.html" class="block py-2 hover:text-red-200">Admin Dashboard</a>
+      <a href="donor-dashboard.html" class="block py-2 hover:text-red-200">Donor Dashboard</a>
+      <a href="hospital-dashboard.html" class="block py-2 hover:text-red-200">Hospital Dashboard</a>
+      <a href="about.html" class="block py-2 hover:text-red-200">About</a>
+      <a href="contact.html" class="block py-2 hover:text-red-200">Contact</a>
+      <a href="help.html" class="block py-2 hover:text-red-200">Help/FAQ</a>
+      -->
+      <a href="/login/" class="block py-2 hover:text-red-200">Login</a>
+      <a href="/register/" class="block py-2 hover:text-red-200">Register</a>
+      <a href="/logout/" class="block py-2 hover:text-red-200">Logout</a>
+    </div>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>
