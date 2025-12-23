@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Request Blood{% endblock title %}
+
+{% block content %}
+
+<!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-4xl">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-4">Request Blood</h1>
+      <p class="text-xl text-gray-700">Submit an urgent or planned blood request. We'll match it with available donors as quickly as possible.</p>
+      <p class="text-sm text-red-600 mt-2 font-medium">Urgent requests are prioritized and may trigger donor notifications.</p>
+    </div>
+
+    <form id="blood-request-form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-10">
+      
+      <!-- Hospital / Requester Info -->
+      <section>
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-hospital mr-3"></i> Requester Information
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Hospital / Clinic Name <span class="text-red-600">*</span></label>
+            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="City General Hospital" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Requesting Doctor <span class="text-red-600">*</span></label>
+            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Dr. Sarah Johnson" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-gray-700 font-medium mb-2">Contact Phone <span class="text-red-600">*</span></label>
+            <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="+1 555 123 4567" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Patient Details -->
+      <section>
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-user-injured mr-3"></i> Patient Details
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Patient Name</label>
+            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="John Smith" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Age</label>
+            <input type="number" min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="45" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Blood Group Required <span class="text-red-600">*</span></label>
+            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">Select...</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+              <option>O+</option><option>O-</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Request Details -->
+      <section>
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-tint mr-3"></i> Request Details
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Quantity (Units) <span class="text-red-600">*</span></label>
+            <input type="number" min="1" max="20" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="2" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Urgency Level <span class="text-red-600">*</span></label>
+            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="routine">Routine / Planned</option>
+              <option value="urgent">Urgent (within 24 hours)</option>
+              <option value="emergency">Emergency (immediate)</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-gray-700 font-medium mb-2">Component Type</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
+              <label class="flex items-center">
+                <input type="checkbox" class="h-5 w-5 text-primary" /> <span class="ml-2">Whole Blood</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="h-5 w-5 text-primary" /> <span class="ml-2">RBC</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="h-5 w-5 text-primary" /> <span class="ml-2">Platelets</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="h-5 w-5 text-primary" /> <span class="ml-2">Plasma</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Additional Information -->
+      <section>
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-notes-medical mr-3"></i> Additional Information
+        </h2>
+        <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" rows="4" placeholder="Any special requirements, diagnosis, or notes..."></textarea>
+      </section>
+
+      <!-- Submit -->
+      <div class="pt-6 border-t">
+        <button type="submit" class="w-full bg-primary text-white py-4 rounded-full text-xl font-bold hover:bg-red-700 transition transform hover:scale-[1.02]">
+          Submit Blood Request <i class="fas fa-arrow-right ml-3"></i>
+        </button>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          All requests are reviewed within a few hours. Urgent/Emergency requests receive priority.
+        </p>
+      </div>
+    </form>
+  </main>
+
+{% endblock content %}
