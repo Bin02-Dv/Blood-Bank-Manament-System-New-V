@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}{% endblock title %} | VitaFlow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#C8102E',    // Crimson Red
+            secondary: '#003366', // Deep Blue
+            accent: '#A8DADC',    // Soft Green
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <h1 class="text-3xl font-bold text-primary">VitaFlow</h1>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="/" class="text-secondary hover:text-primary font-medium">Home</a>
+        {% if request.path == '/' %}
+        <a href="#features" class="text-secondary hover:text-primary font-medium">Features</a>
+        <a href="#about" class="text-secondary hover:text-primary font-medium">About</a>
+        <a href="#faq" class="text-secondary hover:text-primary font-medium">FAQ</a>
+        {% endif %}
+        <a href="/login/" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700">Login</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-secondary text-3xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+      <a href="/" class="text-secondary hover:text-primary font-medium">Home</a>
+      {% if request.path == '/' %}
+      <a href="#features" class="block py-3 px-6 text-secondary hover:bg-gray-100">Features</a>
+      <a href="#about" class="block py-3 px-6 text-secondary hover:bg-gray-100">About</a>
+      <a href="#faq" class="block py-3 px-6 text-secondary hover:bg-gray-100">FAQ</a>
+      {% endif %}
+      <a href="/login/" class="block py-3 px-6 bg-primary text-white hover:bg-red-700">Login</a>
+    </div>
+  </header>
+
+  {% block content %}{% endblock content %}
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-2xl font-bold mb-4">VitaFlow</p>
+      <p class="mb-6">&copy; 2025 VitaFlow. All rights reserved.</p>
+      <div class="space-x-6">
+        <a href="#" class="hover:text-accent">Privacy Policy</a>
+        <a href="#" class="hover:text-accent">Terms of Service</a>
+        <a href="/contact/" class="hover:text-accent">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
