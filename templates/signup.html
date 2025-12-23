@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Become a Donor{% endblock title %}
+
+{% block content %}
+
+<!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-4xl">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-4">Become a Lifesaver</h1>
+      <p class="text-xl text-gray-700">Register as a blood donor in just a few minutes. Your donation can save up to 3 lives!</p>
+    </div>
+
+    <form id="donor-form" class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+      
+      <!-- Step 1: Personal Information -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-user mr-3"></i> Personal Information
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Full Name <span class="text-red-600">*</span></label>
+            <input type="text" id="fullName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="John Doe" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Date of Birth <span class="text-red-600">*</span></label>
+            <input type="date" id="dob" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Gender</label>
+            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Blood Group <span class="text-red-600">*</span></label>
+            <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">Select Blood Group</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+              <option>O+</option><option>O-</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Contact Information -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-envelope mr-3"></i> Contact Details
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Email Address <span class="text-red-600">*</span></label>
+            <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="example@email.com" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Phone Number <span class="text-red-600">*</span></label>
+            <input type="tel" id="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="+123 456 7890" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-gray-700 font-medium mb-2">Address</label>
+            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" rows="3" placeholder="Street, City, State, ZIP"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Health Questionnaire (Simplified) -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+          <i class="fas fa-heartbeat mr-3"></i> Health & Eligibility Check
+        </h2>
+        <div class="space-y-4">
+          <label class="flex items-start">
+            <input type="checkbox" required class="mt-1 mr-3 h-5 w-5 text-primary" />
+            <span class="text-gray-700">I am currently feeling well and have no fever, cold, or infection.</span>
+          </label>
+          <label class="flex items-start">
+            <input type="checkbox" required class="mt-1 mr-3 h-5 w-5 text-primary" />
+            <span class="text-gray-700">I have not donated blood in the last 56 days.</span>
+          </label>
+          <label class="flex items-start">
+            <input type="checkbox" required class="mt-1 mr-3 h-5 w-5 text-primary" />
+            <span class="text-gray-700">I have not traveled to malaria-risk areas in the last 12 months.</span>
+          </label>
+          <label class="flex items-start">
+            <input type="checkbox" class="mt-1 mr-3 h-5 w-5 text-primary" />
+            <span class="text-gray-700">I have never had hepatitis, HIV, or other blood-transmissible diseases.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Consent & Submit -->
+      <div class="border-t pt-8">
+        <label class="flex items-start mb-6">
+          <input type="checkbox" required class="mt-1 mr-3 h-5 w-5 text-primary" />
+          <span class="text-gray-700">I consent to the collection and processing of my personal and health data for blood donation purposes. I understand that my information will be handled securely.</span>
+        </label>
+
+        <button type="submit" class="w-full bg-primary text-white py-4 rounded-full text-xl font-bold hover:bg-red-700 transition transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300">
+          Register as Donor <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+      </div>
+    </form>
+
+    <p class="text-center mt-10 text-gray-600">
+      Already registered? <a href="/login/" class="text-primary font-semibold hover:underline">Login here</a>
+    </p>
+  </main>
+
+{% endblock content %}

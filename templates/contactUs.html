@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+
+<!-- Main Content -->
+  <main class="container mx-auto px-6 py-12 max-w-5xl">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-4">Get in Touch</h1>
+      <p class="text-xl text-gray-700">Have questions about donations, requests, or the system? We're here to help!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold text-primary mb-6">Send Us a Message</h2>
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Full Name <span class="text-red-600">*</span></label>
+            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your Name" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Email Address <span class="text-red-600">*</span></label>
+            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="your@email.com" />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Subject</label>
+            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option>General Inquiry</option>
+              <option>Donation Questions</option>
+              <option>Blood Request Assistance</option>
+              <option>Technical Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Message <span class="text-red-600">*</span></label>
+            <textarea required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Tell us how we can help..."></textarea>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Attach File (optional)</label>
+            <input type="file" class="w-full px-4 py-3 border border-gray-300 rounded-lg" />
+          </div>
+          <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="flex flex-col justify-center space-y-8">
+        <div>
+          <h3 class="text-xl font-bold text-secondary mb-3 flex items-center"><i class="fas fa-map-marker-alt text-primary mr-3"></i> Our Location</h3>
+          <p class="text-gray-700">123 Blood Drive Street, City Center, State 12345</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-secondary mb-3 flex items-center"><i class="fas fa-phone-alt text-primary mr-3"></i> Phone</h3>
+          <p class="text-gray-700">+1 (555) 123-4567 (Mon-Fri, 9AM-5PM)</p>
+          <p class="text-gray-700">Emergency: +1 (555) 987-6543 (24/7)</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-secondary mb-3 flex items-center"><i class="fas fa-envelope text-primary mr-3"></i> Email</h3>
+          <p class="text-gray-700">support@vitaflow.org</p>
+          <p class="text-gray-700">emergency@vitaflow.org</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-secondary mb-3 flex items-center"><i class="fas fa-clock text-primary mr-3"></i> Hours</h3>
+          <p class="text-gray-700">Monday - Friday: 9:00 AM - 5:00 PM</p>
+          <p class="text-gray-700">Saturday: 10:00 AM - 2:00 PM</p>
+          <p class="text-gray-700">Sunday: Closed</p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

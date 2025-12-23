@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from BBMSApp.views import page_404, page_500
 
 urlpatterns = [
     path('ad/', admin.site.urls),
     path('', include('BBMSApp.urls'))
 ]
+
+hander404 = page_404
+hander500 = page_500
