@@ -14,6 +14,9 @@ def login(request):
 def contact_us(request):
     return render(request, "contactUs.html")
 
+def request_blood(request):
+    return render(request, "request-blood.html")
+
 
 # error handler
 
@@ -22,3 +25,12 @@ def page_404(request, exception):
 
 def page_500(request, exception):
     return render(request, "500.html")
+
+
+# donor dashboard
+
+def donor_dash(request):
+    return render(request, "Donor/dash.html")
+
+def book_appointment(request):
+    return render(request, "Donor/book-appointment.html")

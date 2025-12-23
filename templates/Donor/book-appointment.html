@@ -1,0 +1,117 @@
+{% extends "Donor/base.html" %}
+
+{% block title %}Book Appointment{% endblock title %}
+
+{% block content %}
+
+<main class="flex-1 p-6 md:p-10">
+    <h1 class="text-3xl font-bold text-secondary mb-8">Book Your Donation Appointment</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Calendar -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Select Date</h2>
+            <div id="calendar"></div>
+        </div>
+
+        <!-- Time Slots & Summary -->
+        <div class="bg-white rounded-xl shadow p-6">
+            <h2 class="text-2xl font-semibold text-secondary mb-6">Available Slots</h2>
+            
+            <div id="selected-date-info" class="mb-6 text-gray-600">
+                Please select a date on the calendar
+            </div>
+
+            <div id="time-slots" class="space-y-3">
+                <!-- Time slots will be populated by JS -->
+            </div>
+
+            <div class="mt-8 pt-6 border-t">
+                <h3 class="font-semibold text-lg mb-4">Your Selection</h3>
+                <div id="booking-summary" class="text-gray-700 space-y-2">
+                    <p><strong>Date:</strong> <span id="summary-date">-</span></p>
+                    <p><strong>Time:</strong> <span id="summary-time">-</span></p>
+                    <p><strong>Location:</strong> Central Blood Center</p>
+                </div>
+
+                <button id="confirm-booking-btn" 
+                        class="mt-6 w-full bg-primary text-white py-4 rounded-lg font-bold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled>
+                    Confirm Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const timeSlotsContainer = document.getElementById('time-slots');
+        const confirmBtn = document.getElementById('confirm-booking-btn');
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek'
+        },
+        validRange: {
+            start: new Date() // cannot book in the past
+        },
+        dateClick: function(info) {
+            // Simple availability simulation
+            const dateStr = info.dateStr;
+            document.getElementById('selected-date-info').textContent = `Selected: ${new Date(dateStr).toLocaleDateString()}`;
+            
+            // Mock available times (in real app → fetch from API)
+            const availableTimes = [
+            '09:00 AM', '09:30 AM', '10:00 AM', '11:30 AM',
+            '01:00 PM', '02:00 PM', '03:30 PM', '04:00 PM'
+            ];
+
+            timeSlotsContainer.innerHTML = '';
+            availableTimes.forEach(time => {
+            const btn = document.createElement('button');
+            btn.className = 'w-full py-3 px-4 border rounded-lg hover:bg-primary/10 transition text-left font-medium';
+            btn.textContent = time;
+            btn.onclick = () => selectTime(time, dateStr);
+            timeSlotsContainer.appendChild(btn);
+            });
+
+            // Reset summary
+            document.getElementById('summary-date').textContent = new Date(dateStr).toLocaleDateString();
+            document.getElementById('summary-time').textContent = '-';
+            confirmBtn.disabled = true;
+        }
+        });
+
+        calendar.render();
+
+        function selectTime(time, date) {
+        document.getElementById('summary-time').textContent = time;
+        confirmBtn.disabled = false;
+        
+        // Highlight selected button
+        document.querySelectorAll('#time-slots button').forEach(b => {
+            b.classList.remove('bg-primary', 'text-white');
+            if (b.textContent === time) {
+            b.classList.add('bg-primary', 'text-white');
+            }
+        });
+        }
+
+        confirmBtn.addEventListener('click', () => {
+        const date = document.getElementById('summary-date').textContent;
+        const time = document.getElementById('summary-time').textContent;
+        
+        if (date !== '-' && time !== '-') {
+            alert(`Appointment confirmed!\n\nDate: ${date}\nTime: ${time}\nLocation: Central Blood Center\n\nYou will receive a confirmation email/SMS shortly.`);
+            // In real app → send to backend
+        }
+        });
+    });
+</script>
+
+{% endblock content %}
